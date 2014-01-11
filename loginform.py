@@ -68,6 +68,8 @@ def submit_value(form):
   """Returns the value for the submit input, if any"""
   values = []
   for x in form.inputs:
+    if not isinstance(x, html.InputElement):
+      continue
     if x.type == "submit" and x.name:
       values.append((x.name, x.value))
   return values
